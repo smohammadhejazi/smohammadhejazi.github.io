@@ -44,19 +44,19 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
 @for $i from 0 through $columns {
   .col-#{$i} {
-    width: percentage( calc(calc($i / $columns)) );
+    width: percentage( calc($i / $columns));
   }
 }
 
 @for $i from 0 through $columns {
   .push-#{$i} {
-    margin-left: percentage( calc(calc($i / $columns)) );
+    margin-left: percentage( calc($i / $columns));
   }
 }
 
 @for $i from 0 through $columns {
   .pull-#{$i} {
-    margin-right: percentage( calc(calc($i / $columns)) );
+    margin-right: percentage( calc($i / $columns));
   }
 }
 
