@@ -1,0 +1,45 @@
+#-------------------------------
+# General Site Settings
+title: Seyed Mohammad Hejazi Hoseini
+logo: logo.svg
+description: Seyed Mohammad Hejazi Hoseini's personal page
+
+
+#-------------------------------
+# Author Settings
+author:
+  name: Seyed Mohammad Hejazi Hoseini
+  image: me.jpg
+  say-hello: Hello, I'm <strong>Seyed Mohammad Hejazi Hoseini</strong>
+  bio: Computer engineer graduate from Amirkabir University of Technology. My research intrests are <strong>Software Engineering</strong>, <strong>Cloud Computing</strong>, and <strong>Machine Learning</strong>.
+
+
+#-------------------------------
+# Contact links
+email: mailto:smhejazihoseini@gmail.com
+github: https://github.com/smohammadhejazi
+linkedin: www.linkedin.com/in/smohammadhejazi
+# twitter: https://twitter.com/ 
+# facebook: https://facebook.com/ 
+# instagram: https://instagram.com/ 
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: # add your shortname for Disqus Comment. For example mr-brown
+
+
+#-------------------------------
+# Instagram Feed
+instafeed: # To enable the instafeed, use the value true. To turn off use the value false.
+instagram-profile: # Add instagram username
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Newsletter
+mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
