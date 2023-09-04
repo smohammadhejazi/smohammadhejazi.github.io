@@ -47,7 +47,7 @@ GPA: 18.65/20 (4/4)
     <div class="page-title-box">
 		<div class="row">
 			<div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-				<h1 class="page-title">Tests</h1>
+				<h1 class="page-title">Test Score</h1>
 			</div>
 		</div>
 	</div>
