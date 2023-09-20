@@ -11,7 +11,7 @@ author:
   name: Seyed Mohammad Hejazi Hoseini
   image: me.jpg
   say-hello: Hello, I'm <strong>Seyed Mohammad Hejazi Hoseini</strong>
-  bio: Computer Engineer Graduate From Amirkabir University of Technology. You Can Download My CV From <a href="{{ site.url }}/CV.pdf" target="_blank">Here</a>
+  bio: Computer Engineer Graduate From Amirkabir University of Technology.
 
 
 #-------------------------------
