@@ -14,7 +14,6 @@ Random facts about me:
 - 🎥 My favorite movie of all time is probably Pirates of the Caribbean: Dead Man's Chest.
 - 🎞️ My favorite cartoon series of all time is SpongeBob SquarePants.
 - 🎮 My favorite video game is probably The Witcher 3: Wild Hunt.
-- 👀 I have a secret YouTube channel.
 - 🍕 I can make a mean pizza.
 - 💇‍♂️ I'm trying to grow my hair.
 - 🚗 I have to drive a Dodge Hellcat at least once before I die.
