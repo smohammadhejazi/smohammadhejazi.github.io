@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    margin-bottom: 8px;
+  }
+  
+  p {
+    color: #444;
+  }
+  
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 16px;
+  }
+  
+  button {
+    margin-top: 12px;
+    padding: 10px 18px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .chat-box {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    min-height: 80px;
+    background: #fafafa;
+  }
