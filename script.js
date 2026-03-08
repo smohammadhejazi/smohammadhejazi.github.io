@@ -101,5 +101,13 @@ chatForm.addEventListener("submit", async (event) => {
   }
 });
 
-autoResizeTextarea();
-scrollToBottom();
+function initializeChat() {
+  addMessage(
+    "assistant",
+    "Hi — ask me anything about my background, education, research, projects, and experience."
+  );
+  autoResizeTextarea();
+  scrollToBottom();
+}
+
+initializeChat();
