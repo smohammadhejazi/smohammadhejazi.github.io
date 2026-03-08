@@ -1,29 +1,98 @@
----
-layout: default
----
-{% include hero.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Seyed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.5;
+    }
 
-<div class="container">
-	<div class="row">
-		<div class="col col-12">
-			{% if site.posts.size > 0 %}
-				<div class="lates-title">
-					<div class="lates-title-before"></div>
-					<div class="lates-title-text">Selected Projects</div>
-					<div class="lates-title-after"></div>
-				</div>
-			{% endif %}
-		</div>
-	</div>
-</div>
+    h1 {
+      margin-bottom: 8px;
+    }
 
-<div class="container">
-	<div class="row">
-	{% if site.posts.size > 0 %}
-		{% for post in paginator.posts %}
-			{% include article-content.html %}
-		{% endfor %}
-	{% endif %}
-	</div>
-</div>
-<!-- {% include pagination.html %} -->
+    p {
+      color: #444;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      font-size: 16px;
+      box-sizing: border-box;
+      margin-top: 16px;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .chat-box {
+      margin-top: 24px;
+      padding: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      min-height: 80px;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ask Seyed</h1>
+  <p>Ask me about my background, research, and projects.</p>
+
+  <textarea id="message" placeholder="Ask a question..."></textarea>
+  <br />
+  <button id="sendBtn">Send</button>
+
+  <div class="chat-box" id="responseBox">Response will appear here.</div>
+
+  <script>
+    const workerUrl = "https://profile-chatbot.smhejazihoseini.workers.dev";
+
+    document.getElementById("sendBtn").addEventListener("click", async () => {
+      const message = document.getElementById("message").value.trim();
+      const responseBox = document.getElementById("responseBox");
+
+      if (!message) {
+        responseBox.textContent = "Please type a question.";
+        return;
+      }
+
+      responseBox.textContent = "Loading...";
+
+      try {
+        const res = await fetch(workerUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          responseBox.textContent = "Error: " + JSON.stringify(data, null, 2);
+          return;
+        }
+
+        responseBox.textContent = data.reply || "No response returned.";
+      } catch (err) {
+        responseBox.textContent = "Request failed: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
