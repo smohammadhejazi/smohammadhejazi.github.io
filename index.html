@@ -8,14 +8,31 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Ask Mohammad</h1>
-  <p>Ask me about my background, research, and projects.</p>
+  <div class="app">
+    <header class="topbar">
+      <h1>Ask Mohammad</h1>
+      <p>Ask me about my background, research, and projects.</p>
+    </header>
 
-  <textarea id="message" placeholder="Ask a question..."></textarea>
-  <br />
-  <button id="sendBtn">Send</button>
+    <main class="chat-wrapper">
+      <div id="chatMessages" class="chat-messages">
+        <div class="message-row assistant">
+          <div class="message-bubble assistant-bubble">
+            Hi — ask me anything about my background, education, research, projects, and experience.
+          </div>
+        </div>
+      </div>
 
-  <div class="chat-box" id="responseBox">Response will appear here.</div>
+      <form id="chatForm" class="chat-input-area">
+        <textarea
+          id="messageInput"
+          placeholder="Type your message..."
+          rows="1"
+        ></textarea>
+        <button type="submit" id="sendBtn">Send</button>
+      </form>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
