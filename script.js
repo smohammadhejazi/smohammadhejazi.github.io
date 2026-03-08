@@ -104,7 +104,7 @@ chatForm.addEventListener("submit", async (event) => {
 function initializeChat() {
   addMessage(
     "assistant",
-    "Hi — ask me anything about my background, education, research, projects, and experience."
+    "Ask me anything about my background, education, research, projects, and experience."
   );
   autoResizeTextarea();
   scrollToBottom();
