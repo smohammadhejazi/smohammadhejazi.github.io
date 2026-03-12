@@ -10,7 +10,7 @@ Hi, you can call me Mohammad. I was born in a city called Qom, in Iran.
 
 Random facts about me:
 - :fr: I am learning French, slowly, but surely.
-- 🏋️ I work out frequently, both for physical and mental health. My best record for a 2-minute push-up test is 61.
+- 🏋️ I work out frequently, both for physical and mental health. My best 2-minute push-up record is 61.
 - 🧑‍🏫 I am very comfortable giving presentations
 - 🎥 My favorite movie of all time is Readline.
 - 🎞️ My favorite cartoon series of all time is SpongeBob SquarePants, as silly as it is.
