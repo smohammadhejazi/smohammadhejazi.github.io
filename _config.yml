@@ -8,6 +8,7 @@ remote_theme: "mmistakes/minimal-mistakes@4.27.3"
 
 plugins:
   - jekyll-include-cache
+  - jemoji
 
 minimal_mistakes_skin: "default"
 markdown: kramdown

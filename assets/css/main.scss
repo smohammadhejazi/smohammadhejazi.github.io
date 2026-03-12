@@ -877,3 +877,12 @@ a:hover {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+img.emoji {
+  display: inline-block;
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: -0.1em;
+  margin-right: 0.2em;
+  padding-left: 0.25em;
+}
