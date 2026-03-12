@@ -1,0 +1,835 @@
+---
+---
+
+@import "minimal-mistakes";
+
+/* =========================================================
+   Base
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: #ffffff;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.layout--splash .page {
+  padding-top: 0;
+}
+
+/* =========================================================
+   Full-width band helper
+   ========================================================= */
+
+.hero-profile-band,
+.profile-section {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  padding-left: max(1.5rem, calc((100vw - 1120px) / 2));
+  padding-right: max(1.5rem, calc((100vw - 1120px) / 2));
+}
+
+/* =========================================================
+   Profile hero band
+   ========================================================= */
+
+.hero-profile-band {
+  padding-top: 1.5rem;
+  padding-bottom: 1.75rem;
+  background: #ffffff;
+  border-top: 1px solid #eef2f7;
+  border-bottom: 1px solid #eef2f7;
+  margin-top: 0.25rem;
+}
+
+.hero-profile {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.hero-profile_left {
+  text-align: center;
+}
+
+.hero-profile_image {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 999px;
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.hero-profile_name {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  word-break: normal;
+}
+
+.hero-profile_role {
+  margin: 0 0 0.02rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.hero-profile_org {
+  margin: 0 0 0.75rem;
+  color: #2443a6;
+  font-size: 0.95rem;
+}
+
+.page_content .hero-profile_role {
+  margin-bottom: 0.1rem;
+}
+
+.page_content .hero-profile_org {
+  margin-bottom: 0.75rem;
+}
+
+/* Use this block if you are still using inline SVG icons */
+.hero-profile_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.hero-profile_links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #2443a6;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.hero-profile_links a:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.hero-profile_links svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.hero-profile_cv {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Use this block if you switched to Font Awesome icons */
+.network-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.network-icon li {
+  margin: 0;
+  padding: 0;
+}
+
+.network-icon a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 34px;
+  color: #2443a6;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.network-icon a:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.big-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.cv-text-icon {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hero-profile_right {
+  min-width: 0;
+}
+
+.hero-profile_chat-area {
+  margin-bottom: 1.25rem;
+}
+
+.hero-profile_chat-intro {
+  margin-bottom: 0.75rem;
+}
+
+.hero-profile_chat-intro h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.hero-profile_chat-intro p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.hero-profile_bio {
+  max-width: 860px;
+}
+
+.hero-profile_bio p {
+  margin: 0 0 0.85rem;
+  color: #374151;
+  line-height: 1.75;
+  font-size: 0.96rem;
+}
+
+/* =========================================================
+   Chat UI
+   ========================================================= */
+
+.chat-shell {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.chat-messages {
+  flex: 1;
+  min-height: 250px;
+  max-height: 46vh;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #fafafa;
+}
+
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row.assistant {
+  justify-content: flex-start;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  max-width: min(78%, 700px);
+  padding: 0.85rem 0.95rem;
+  border-radius: 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.96rem;
+}
+
+.assistant-bubble {
+  background: #f1f5f9;
+  color: #111827;
+  border-bottom-left-radius: 6px;
+}
+
+.user-bubble {
+  background: #dbeafe;
+  color: #111827;
+  border-bottom-right-radius: 6px;
+}
+
+.typing {
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem 1rem;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+#messageInput {
+  flex: 1;
+  resize: none;
+  min-height: 48px;
+  max-height: 160px;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  outline: none;
+  font: inherit;
+  line-height: 1.4;
+  background: #ffffff;
+  color: #111827;
+  overflow-y: hidden;
+}
+
+#messageInput:focus {
+  border-color: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+#sendBtn {
+  align-self: flex-end;
+  min-width: 88px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#sendBtn:hover {
+  opacity: 0.94;
+}
+
+#sendBtn:active {
+  transform: translateY(1px);
+}
+
+#sendBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   Full-width alternating academic sections
+   ========================================================= */
+
+.profile-section {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 3rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+  border-top: 1px solid #eceff4;
+}
+
+.profile-section:nth-of-type(even) {
+  background: #ffffff;
+}
+
+.profile-section:nth-of-type(odd) {
+  background: #f8fafc;
+}
+
+.profile-section_label {
+  min-width: 0;
+}
+
+.profile-section_label h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #111827;
+}
+
+.profile-section_label a {
+  font-size: 0.9rem;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.profile-section_label a:hover {
+  text-decoration: underline;
+}
+
+.profile-section_content {
+  min-width: 0;
+}
+
+.profile-section_content > *:last-child {
+  margin-bottom: 0;
+}
+
+.profile-section_content h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: #111827;
+}
+
+.profile-section_content p {
+  margin: 0 0 0.55rem;
+  line-height: 1.7;
+  color: #374151;
+  font-size: 0.96rem;
+}
+
+.profile-section_content ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.profile-section_content li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+  color: #374151;
+  font-size: 0.96rem;
+}
+
+/* =========================================================
+   Summary / list content
+   ========================================================= */
+
+.compact-list {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+/* =========================================================
+   Education
+   ========================================================= */
+
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+}
+
+.edu-item h3 {
+  margin-bottom: 0.15rem;
+}
+
+.edu-date {
+  margin: 0 0 0.3rem;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.edu-degree {
+  font-weight: 500;
+  color: #111827;
+}
+
+.edu-location,
+.edu-meta {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.edu-courses {
+  margin-top: 0.7rem;
+}
+
+.edu-courses-label {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.two-column-list {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 2.25rem;
+}
+
+/* =========================================================
+   News
+   ========================================================= */
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-list li {
+  margin-bottom: 0.65rem;
+  line-height: 1.65;
+}
+
+.news-date {
+  color: #6b7280;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Projects page
+   ========================================================= */
+
+.projects-page {
+  margin-top: 0.35rem;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+}
+
+.project-item {
+  padding-bottom: 1.7rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.project-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project-item_meta {
+  margin-bottom: 0.35rem;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.project-item_title {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.project-item_title a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.project-item_title a:hover {
+  text-decoration: underline;
+}
+
+.project-item_tags {
+  margin: 0 0 0.55rem;
+  color: #4b5563;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.project-item_description {
+  margin: 0;
+  color: #374151;
+  line-height: 1.7;
+  max-width: 900px;
+  font-size: 0.96rem;
+}
+
+/* =========================================================
+   Utility
+   ========================================================= */
+
+.section-link {
+  margin-top: 1rem;
+}
+
+.section-link a {
+  font-weight: 600;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .hero-profile {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero-profile_left {
+    text-align: center;
+  }
+
+  .profile-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .two-column-list {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-profile-band {
+    padding-top: 1.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-profile_image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero-profile_name {
+    font-size: 1.15rem;
+  }
+
+  .chat-shell {
+    min-height: 360px;
+  }
+
+  .chat-messages {
+    min-height: 220px;
+    max-height: 42vh;
+  }
+
+  .message-bubble {
+    max-width: 90%;
+  }
+
+  .chat-input-area {
+    flex-direction: column;
+  }
+
+  #sendBtn {
+    align-self: stretch;
+  }
+}
+
+/* =========================================================
+   Global styling for normal markdown pages
+   Applies to layout: single pages like education, news, CV, etc.
+   ========================================================= */
+
+   .layout--single .page {
+    width: min(1120px, calc(100vw - 3rem));
+    max-width: none;
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+  }
+  
+  .layout--single .page .page__inner-wrap {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    float: none;
+  }
+  
+  .layout--single .page .page__content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    float: none;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  /* Page title */
+  .layout--single .page .page__title {
+    margin-bottom: 1.25rem;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #111827;
+  }
+  
+  /* Headings inside markdown pages */
+  .layout--single .page .page__content h1,
+  .layout--single .page .page__content h2,
+  .layout--single .page .page__content h3,
+  .layout--single .page .page__content h4 {
+    color: #111827;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  
+  .layout--single .page .page__content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.45rem;
+  }
+  
+  .layout--single .page .page__content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+  }
+  
+  .layout--single .page .page__content h4 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.45rem;
+    font-size: 1.02rem;
+  }
+  
+  /* Paragraphs and text */
+  .layout--single .page .page__content p {
+    margin: 0 0 0.9rem;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  .layout--single .page .page__content strong {
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  /* Lists */
+  .layout--single .page .page__content ul,
+  .layout--single .page .page__content ol {
+    margin: 0 0 1rem;
+    padding-left: 1.35rem;
+  }
+  
+  .layout--single .page .page__content li {
+    margin-bottom: 0.4rem;
+    color: #374151;
+    line-height: 1.75;
+  }
+  
+  /* Horizontal rules */
+  .layout--single .page .page__content hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  /* Tables */
+  .layout--single .page .page__content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.97rem;
+  }
+  
+  .layout--single .page .page__content th,
+  .layout--single .page .page__content td {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+  }
+  
+  .layout--single .page .page__content th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .layout--single .page .page__content td {
+    color: #374151;
+  }
+  
+  /* Links */
+  .layout--single .page .page__content a {
+    color: #2443a6;
+  }
+  
+  .layout--single .page .page__content a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Remove extra narrow feel on medium screens */
+  @media (max-width: 900px) {
+    .layout--single .page {
+      width: min(100%, calc(100vw - 2rem));
+    }
+  
+    .layout--single .page .page__title {
+      font-size: 1.8rem;
+    }
+  
+    .layout--single .page .page__content {
+      font-size: 0.98rem;
+    }
+  }
+
+  /* =========================================================
+   Experience section
+   ========================================================= */
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-item h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  color: #111827;
+}
+
+.experience-org {
+  margin: 0 0 0.2rem;
+  font-size: 0.98rem;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.experience-date {
+  margin: 0 0 0.7rem;
+  font-size: 0.93rem;
+  color: #6b7280;
+}
+
+.experience-meta {
+  margin: 0 0 0.45rem;
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.experience-label {
+  font-weight: 600;
+  color: #111827;
+}

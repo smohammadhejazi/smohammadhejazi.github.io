@@ -1,0 +1,19 @@
+title: "Mohammad"
+name: "Seyed Mohammad Hejazi Hoseini"
+description: "Research Assistant @ York University | AI Reproducibility"
+url: "http://127.0.0.1:4000"
+baseurl: ""
+
+remote_theme: "mmistakes/minimal-mistakes@4.27.3"
+
+plugins:
+  - jekyll-include-cache
+
+minimal_mistakes_skin: "default"
+markdown: kramdown
+
+atom_feed:
+  hide: true
+
+include:
+  - _pages

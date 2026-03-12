@@ -1,0 +1,73 @@
+<section class="hero-profile-band">
+    <div class="hero-profile">
+      <aside class="hero-profile_left">
+        <img
+          class="hero-profile_image"
+          src="{{ '/assets/images/profile.jpg' | relative_url }}"
+          alt="Seyed Mohammad Hejazi Hoseini"
+        >
+  
+        <h1 class="hero-profile_name">Seyed Mohammad Hejazi Hoseini</h1>
+        <p class="hero-profile_role">Research Assistant</p>
+        <p class="hero-profile_org">York University</p>
+  
+        <ul class="network-icon" aria-hidden="true">
+            <li>
+              <a href="mailto:smhejazihoseini@gmail.com" aria-label="Email" title="Email">
+                <i class="fa-solid fa-envelope big-icon"></i>
+              </a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/smohammadhejazi" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                <i class="fa-brands fa-github big-icon"></i>
+              </a>
+            </li>
+          
+            <li>
+              <a href="https://www.linkedin.com/in/smohammadhejazi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                <i class="fa-brands fa-linkedin big-icon"></i>
+              </a>
+            </li>
+          
+            <li>
+              <a href="{{ '/cv.pdf' | relative_url }}" download="Mohammad_Hejazi_CV.pdf" aria-label="CV" title="CV">
+                <span class="cv-text-icon">CV</span>
+              </a>
+            </li>
+          </ul>
+      </aside>
+  
+      <div class="hero-profile_right">
+        <div class="hero-profile_chat-area">
+          <div class="hero-profile_chat-intro">
+            <h2>Any Questions?</h2>
+            <p>Ask my chatbot, it is built around my profile and has access to my latest updates.</p>
+          </div>
+  
+          {% include chatbot.html %}
+        </div>
+  
+        <div class="hero-profile_bio">
+          <p>
+            Hi, I’m Seyed Mohammad Hejazi Hoseini, a <strong>Research Assistant</strong> and
+            <strong>Master of Applied Science student</strong> in
+            Electrical &amp; Computer Engineering at <strong>York University</strong> in Toronto.
+          </p>
+        
+          <p>
+            My research focuses on <strong>AI reproducibility</strong>,
+            <strong>LLM inference</strong>, and <strong>software engineering agents</strong>.
+            I am particularly interested in improving the reliability, traceability, and
+            repeatability of large language model systems in practical applications.
+          </p>
+        
+          <p>
+            My recent work explores reproducibility challenges in modern large language model inference,
+            including evaluation pipelines, retrieval-augmented generation, and agentic workflows,
+            where small sources of nondeterminism can propagate into significantly different outcomes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>

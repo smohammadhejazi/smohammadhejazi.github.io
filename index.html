@@ -1,33 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ask Mohammad</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="app">
-    <header class="topbar">
-      <h1>Hi, My name is Mohammad</h1>
-      <p>Ask me about my background, research, and projects.</p>
-    </header>
+---
+layout: splash
+title: "Home"
+excerpt: "Seyed Mohammad Hejazi Hoseini's Resume"
+classes:
+  - landing
+  - wide
+---
 
-    <main class="chat-wrapper">
-      <div id="chatMessages" class="chat-messages"></div>
+{% include profile-hero.html %}
 
-      <form id="chatForm" class="chat-input-area">
-        <textarea
-          id="messageInput"
-          placeholder="Type your message..."
-          rows="1"
-        ></textarea>
-        <button type="submit" id="sendBtn">Send</button>
-      </form>
-    </main>
-  </div>
+{% include research-summary.html %}
+{% include experience.html %}
+{% include education-summary.html %}
+{% include news-summary.html %}
 
-  <script src="script.js"></script>
-</body>
-</html>
+<script src="{{ '/assets/js/chat.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/custom.js' | relative_url }}"></script>

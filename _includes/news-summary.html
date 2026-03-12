@@ -1,0 +1,18 @@
+<section class="profile-section">
+  <div class="profile-section_label">
+    <h2>Recent News</h2>
+    <a href="/news/">All news »</a>
+  </div>
+
+  <div class="profile-section_content">
+    <ul class="news-list">
+      {% assign all_news = site.data.news | sort: "date" | reverse %}
+      {% for item in all_news limit: 5 %}
+        <li>
+          <span class="news-date">{{ item.date | date: "[%Y/%m]" }}</span>
+          {{ item.text }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
