@@ -18,3 +18,8 @@ atom_feed:
 
 include:
   - _pages
+
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-LX59XEW050"
