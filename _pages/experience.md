@@ -66,8 +66,8 @@ permalink: /experience/
 
 ### Qom Province Electricity Distribution Company
 **Qom, Iran**  
-**Jul. 2021 - Sep. 2021**
+**Jun. 2021 - Sep. 2021**
 
-- Explored data analytics and machine learning applications for electric power distribution, including forecasting, anomaly detection, and equipment health monitoring.
+- Explored data analytics and machine learning applications for electric power distribution and including forecasting.
 - Studied smart-grid infrastructure and modern utility technologies such as smart meters, advanced distribution systems, and grid-edge intelligence.
 - Produced a technical survey on smart power grids and their major components, challenges, and opportunities for intelligent decision-making.
