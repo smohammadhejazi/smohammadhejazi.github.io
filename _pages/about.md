@@ -15,7 +15,7 @@ Random facts about me:
 - 🎥 Favorite movie of all time: Redline.
 - 🎞️ Favorite cartoon series of all time: SpongeBob SquarePants, as silly as it is.
 - 🎮 Favorite video game: The Witcher 3: Wild Hunt.
-- ♟️ Used to play a lot of chess, with a peak Chess.com rating of 1723.
+- ♟️ Used to play a lot of chess, with a peak Chess.com rating of 1740.
 - 🍕 Can make a mean pizza.
 - 💇‍♂️ Currently growing my hair, but also getting tired of it.
 - 🚗 Need to drive a Dodge Hellcat at least once in my life.
