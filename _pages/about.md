@@ -9,14 +9,15 @@ Hi, you can call me Mohammad. I was born in a city called Qom, in Iran.
 ***
 
 Random facts about me:
-- :fr: I am learning French, slowly, but surely.
-- 🏋️ I work out frequently, both for physical and mental health. My best 2-minute push-up record is 61.
-- 🧑‍🏫 I am very comfortable giving presentations
-- 🎥 My favorite movie of all time is Readline.
-- 🎞️ My favorite cartoon series of all time is SpongeBob SquarePants, as silly as it is.
-- 🎮 My favorite video game is The Witcher 3: Wild Hunt.
-- ♟️ I used to play chess a lot, and my highest rating on Chess.com was 1723.
-- 🍕 I can make a mean pizza.
-- 💇‍♂️ I'm growing my hair, but also tired of it.
-- 🚗 I have to drive a Dodge Hellcat at least once before I die.
-- 📷 I make and edit videos on my social media platforms in my free time.
+- :fr: Learning French, slowly but surely.
+- 🏋️‍♂️ Working out regularly for both physical and mental health. Best 2-minute push-up record: 61.
+- 🧑‍🏫 Very comfortable giving presentations.
+- 🎥 Favorite movie of all time: Redline.
+- 🎞️ Favorite cartoon series of all time: SpongeBob SquarePants, as silly as it is.
+- 🎮 Favorite video game: The Witcher 3: Wild Hunt.
+- ♟️ Used to play a lot of chess, with a peak Chess.com rating of 1723.
+- 🍕 Can make a mean pizza.
+- 💇‍♂️ Currently growing my hair, but also getting tired of it.
+- 🚗 Need to drive a Dodge Hellcat at least once in my life.
+- 📷 Spend some free time making and editing videos for social media.
+- 🕹️ Reached Immortal in Dota 2 and Emerald in League of Legends.
