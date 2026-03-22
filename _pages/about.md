@@ -19,5 +19,5 @@ Random facts about me:
 - 🍕 Can make a mean pizza.
 - 💇‍♂️ Currently growing my hair, but also getting tired of it.
 - 🚗 Need to drive a Dodge Hellcat at least once in my life.
-- 📷 Spend some free time making and editing videos for social media.
+- 📷 In my free time, I make and edit videos on YouTube.
 - 🕹️ Reached Immortal in Dota 2 and Emerald in League of Legends.
