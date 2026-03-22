@@ -20,4 +20,4 @@ Random facts about me:
 - 💇‍♂️ Currently growing my hair, but also getting tired of it.
 - 🚗 Need to drive a Dodge Hellcat at least once in my life.
 - 📷 In my free time, I make and edit videos on YouTube.
-- 🕹️ Reached Immortal in Dota 2 and Emerald in League of Legends.
+- 🕹️ Reached Immortal rank in Dota 2 and Emerald rank in League of Legends.
