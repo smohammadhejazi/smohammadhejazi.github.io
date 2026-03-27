@@ -181,6 +181,17 @@ export default {
       return new Response(null, { headers: corsHeaders });
     }
 
+    if (request.method === "GET") {
+      return jsonResponse(
+        {
+          ok: true,
+          message: "Profile chatbot worker is running."
+        },
+        200,
+        corsHeaders
+      );
+    }
+
     if (request.method !== "POST") {
       return jsonResponse({ error: "Method not allowed" }, 405, corsHeaders);
     }
@@ -190,6 +201,14 @@ export default {
     }
 
     try {
+      if (!env.OPENAI_API_KEY) {
+        return jsonResponse(
+          { error: "Missing OPENAI_API_KEY secret in worker environment" },
+          500,
+          corsHeaders
+        );
+      }
+
       const ip = getClientIp(request);
       const rate = checkRateLimit(ip);
 
@@ -211,15 +230,22 @@ export default {
         return jsonResponse({ error: "Missing message" }, 400, corsHeaders);
       }
 
-      if (message.length > MAX_MESSAGE_LENGTH) {
+      const trimmedMessage = message.trim();
+
+      if (!trimmedMessage) {
+        return jsonResponse({ error: "Missing message" }, 400, corsHeaders);
+      }
+
+      if (trimmedMessage.length > MAX_MESSAGE_LENGTH) {
         return jsonResponse({ error: "Message too long" }, 400, corsHeaders);
       }
 
-      const queryEmbedding = await embedQuery(message, env.OPENAI_API_KEY);
-      const ranked = rankChunks(message, queryEmbedding);
+      const queryEmbedding = await embedQuery(trimmedMessage, env.OPENAI_API_KEY);
+      const ranked = rankChunks(trimmedMessage, queryEmbedding);
       const retrieved = selectRetrievedChunks(ranked);
 
-      const developerPrompt = buildDeveloperPrompt(retrieved);
+      const instructions = buildInstructions(retrieved);
+
       const openaiResponse = await fetch("https://api.openai.com/v1/responses", {
         method: "POST",
         headers: {
@@ -229,16 +255,13 @@ export default {
         body: JSON.stringify({
           model: RESPONSE_MODEL,
           store: false,
-          input: [
-            {
-              role: "developer",
-              content: developerPrompt
-            },
-            {
-              role: "user",
-              content: message
+          instructions,
+          input: trimmedMessage,
+          text: {
+            format: {
+              type: "text"
             }
-          ],
+          },
           max_output_tokens: 500
         })
       });
@@ -246,14 +269,31 @@ export default {
       const data = await openaiResponse.json();
 
       if (!openaiResponse.ok) {
-        return jsonResponse({ error: data }, openaiResponse.status, corsHeaders);
+        console.log("OpenAI responses API error:");
+        console.log(JSON.stringify(data, null, 2));
+
+        return jsonResponse(
+          {
+            error: "OpenAI request failed",
+            details: data
+          },
+          openaiResponse.status,
+          corsHeaders
+        );
       }
 
       const reply = extractText(data);
 
       if (!reply) {
+        console.log("OpenAI response had no extracted text:");
+        console.log(JSON.stringify(data, null, 2));
+
         return jsonResponse(
-          { error: "Model returned no text output" },
+          {
+            error: "Model returned no text output",
+            status: data?.status || null,
+            incomplete_details: data?.incomplete_details || null
+          },
           502,
           corsHeaders
         );
@@ -262,12 +302,17 @@ export default {
       return jsonResponse(
         {
           reply,
-          sources: retrieved.map((entry) => toSourceCard(entry.chunk, entry.finalScore))
+          sources: retrieved.map((entry) =>
+            toSourceCard(entry.chunk, entry.finalScore)
+          )
         },
         200,
         corsHeaders
       );
     } catch (error) {
+      console.log("Worker runtime error:");
+      console.log(String(error));
+
       return jsonResponse(
         {
           error: "Server error",
@@ -287,7 +332,7 @@ function buildCorsHeaders(requestOrigin) {
 
   return {
     "Access-Control-Allow-Origin": allowedOrigin,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json"
   };
@@ -358,7 +403,13 @@ async function embedQuery(message, apiKey) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(`Embeddings request failed: ${response.status} ${JSON.stringify(data)}`);
+    throw new Error(
+      `Embeddings request failed: ${response.status} ${JSON.stringify(data)}`
+    );
+  }
+
+  if (!data?.data?.[0]?.embedding) {
+    throw new Error("Embeddings API returned no embedding.");
   }
 
   return data.data[0].embedding;
@@ -412,7 +463,7 @@ function selectRetrievedChunks(ranked) {
   return ranked.slice(0, MAX_RETRIEVED_CHUNKS);
 }
 
-function buildDeveloperPrompt(retrieved) {
+function buildInstructions(retrieved) {
   const evidence = retrieved.length
     ? retrieved
         .map(
@@ -556,21 +607,45 @@ function humanizeSection(section) {
 }
 
 function extractText(data) {
-  if (typeof data.output_text === "string" && data.output_text.trim()) {
-    return data.output_text.trim();
+  const texts = [];
+  const refusals = [];
+
+  if (typeof data?.output_text === "string" && data.output_text.trim()) {
+    texts.push(data.output_text.trim());
   }
 
-  const chunks = [];
-  
-  for (const item of data.output || []) {
-    if (item.type === "message") {
-      for (const content of item.content || []) {
-        if (content.type === "output_text" && content.text) {
-          chunks.push(content.text);
-        }
+  for (const item of data?.output || []) {
+    if (item?.type !== "message") {
+      continue;
+    }
+
+    for (const content of item.content || []) {
+      if (
+        content?.type === "output_text" &&
+        typeof content.text === "string" &&
+        content.text.trim()
+      ) {
+        texts.push(content.text.trim());
+      }
+
+      if (
+        content?.type === "refusal" &&
+        typeof content.refusal === "string" &&
+        content.refusal.trim()
+      ) {
+        refusals.push(content.refusal.trim());
       }
     }
   }
 
-  return chunks.join("\n").trim();
+  const uniqueTexts = [...new Set(texts.filter(Boolean))];
+  if (uniqueTexts.length > 0) {
+    return uniqueTexts.join("\n");
+  }
+
+  if (refusals.length > 0) {
+    return refusals.join("\n");
+  }
+
+  return "";
 }

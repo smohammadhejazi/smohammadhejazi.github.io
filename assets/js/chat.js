@@ -126,6 +126,20 @@ function autoResizeTextarea() {
   }
 }
 
+async function parseJsonSafely(response) {
+  const raw = await response.text();
+
+  if (!raw) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return { raw };
+  }
+}
+
 async function sendChatMessage(message) {
   const res = await fetch(workerUrl, {
     method: "POST",
@@ -135,15 +149,28 @@ async function sendChatMessage(message) {
     body: JSON.stringify({ message })
   });
 
-  const data = await res.json();
+  const data = await parseJsonSafely(res);
 
   if (!res.ok) {
-    const errorText =
-      typeof data?.error === "string"
-        ? data.error
-        : `Error: ${JSON.stringify(data, null, 2)}`;
+    const errorParts = [];
 
-    throw new Error(errorText);
+    if (typeof data?.error === "string") {
+      errorParts.push(data.error);
+    } else if (data?.error) {
+      errorParts.push(JSON.stringify(data.error));
+    } else {
+      errorParts.push(`HTTP ${res.status}`);
+    }
+
+    if (typeof data?.details === "string" && data.details.trim()) {
+      errorParts.push(data.details);
+    }
+
+    if (data?.incomplete_details) {
+      errorParts.push(JSON.stringify(data.incomplete_details));
+    }
+
+    throw new Error(errorParts.join(" | "));
   }
 
   return {
