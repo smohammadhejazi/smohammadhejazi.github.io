@@ -9,7 +9,7 @@ const MAX_MESSAGE_LENGTH = 1200;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 const EMBEDDING_MODEL = "text-embedding-3-small";
-const RESPONSE_MODEL = "gpt-5-mini";
+const RESPONSE_MODEL = "gpt-5";
 const MAX_RETRIEVED_CHUNKS = 6;
 const MIN_CONFIDENT_SCORE = 0.35;
 
@@ -579,10 +579,23 @@ function toSourceCard(chunk, score) {
     id: chunk.id,
     title: chunk.title,
     section: humanizeSection(chunk.section),
-    snippet: chunk.text.replace(/\s+/g, " ").slice(0, 220),
+    snippet: buildSourceSnippet(chunk),
     url: pickSourceUrl(chunk),
     score: Number(score.toFixed(4))
   };
+}
+
+function buildSourceSnippet(chunk) {
+  const lines = String(chunk.text || "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => {
+      const lower = line.toLowerCase();
+      return !lower.startsWith("section:") && !lower.startsWith("title:");
+    });
+
+  return lines.join(" ").slice(0, 220);
 }
 
 function pickSourceUrl(chunk) {

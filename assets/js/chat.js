@@ -7,18 +7,30 @@ const sendBtn = document.getElementById("sendBtn");
 
 let loadingMessageEl = null;
 
+function createBubble(role, text) {
+  const bubble = document.createElement("div");
+  bubble.className = `message-bubble ${role === "user" ? "user-bubble" : "assistant-bubble"}`;
+  bubble.textContent = text;
+  return bubble;
+}
+
 function addMessage(role, text, sources = []) {
   const row = document.createElement("div");
   row.className = `message-row ${role}`;
 
-  const bubble = document.createElement("div");
-  bubble.className = `message-bubble ${role === "user" ? "user-bubble" : "assistant-bubble"}`;
-  bubble.textContent = text;
+  if (role === "assistant") {
+    const stack = document.createElement("div");
+    stack.className = "assistant-stack";
 
-  row.appendChild(bubble);
+    stack.appendChild(createBubble(role, text));
 
-  if (role === "assistant" && Array.isArray(sources) && sources.length > 0) {
-    row.appendChild(createSourcesContainer(sources));
+    if (Array.isArray(sources) && sources.length > 0) {
+      stack.appendChild(createSourcesContainer(sources));
+    }
+
+    row.appendChild(stack);
+  } else {
+    row.appendChild(createBubble(role, text));
   }
 
   chatMessages.appendChild(row);
@@ -57,20 +69,10 @@ function createSourceCard(source) {
   title.textContent = source?.title || "Untitled source";
   card.appendChild(title);
 
-  const metaParts = [];
-
   if (source?.section) {
-    metaParts.push(source.section);
-  }
-
-  if (source?.id) {
-    metaParts.push(source.id);
-  }
-
-  if (metaParts.length > 0) {
     const meta = document.createElement("div");
     meta.className = "chat-source-meta";
-    meta.textContent = metaParts.join(" • ");
+    meta.textContent = source.section;
     card.appendChild(meta);
   }
 
@@ -88,11 +90,16 @@ function addLoadingMessage() {
   loadingMessageEl = document.createElement("div");
   loadingMessageEl.className = "message-row assistant";
 
+  const stack = document.createElement("div");
+  stack.className = "assistant-stack";
+
   const bubble = document.createElement("div");
   bubble.className = "message-bubble assistant-bubble typing";
   bubble.textContent = "Thinking...";
 
-  loadingMessageEl.appendChild(bubble);
+  stack.appendChild(bubble);
+  loadingMessageEl.appendChild(stack);
+
   chatMessages.appendChild(loadingMessageEl);
   scrollToBottom();
 }
@@ -114,7 +121,6 @@ function autoResizeTextarea() {
   const maxHeight = 180;
 
   messageInput.style.height = "0px";
-
   const neededHeight = messageInput.scrollHeight;
 
   if (neededHeight <= maxHeight) {
