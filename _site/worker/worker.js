@@ -169,6 +169,13 @@ const SECTION_KEYWORDS = {
     "classes",
     "studied",
     "relevant coursework"
+  ],
+  extra_information: [
+    "fun fact",
+    "hobbies",
+    "personal",
+    "about you",
+    "random fact"
   ]
 };
 
