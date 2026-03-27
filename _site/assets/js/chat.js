@@ -7,7 +7,7 @@ const sendBtn = document.getElementById("sendBtn");
 
 let loadingMessageEl = null;
 
-function addMessage(role, text) {
+function addMessage(role, text, sources = []) {
   const row = document.createElement("div");
   row.className = `message-row ${role}`;
 
@@ -16,8 +16,72 @@ function addMessage(role, text) {
   bubble.textContent = text;
 
   row.appendChild(bubble);
+
+  if (role === "assistant" && Array.isArray(sources) && sources.length > 0) {
+    row.appendChild(createSourcesContainer(sources));
+  }
+
   chatMessages.appendChild(row);
   scrollToBottom();
+}
+
+function createSourcesContainer(sources) {
+  const container = document.createElement("div");
+  container.className = "chat-sources";
+
+  const heading = document.createElement("div");
+  heading.className = "chat-sources-heading";
+  heading.textContent = "Related profile sources";
+  container.appendChild(heading);
+
+  for (const source of sources) {
+    container.appendChild(createSourceCard(source));
+  }
+
+  return container;
+}
+
+function createSourceCard(source) {
+  const hasUrl = typeof source?.url === "string" && source.url.trim() !== "";
+  const card = document.createElement(hasUrl ? "a" : "div");
+  card.className = "chat-source-card";
+
+  if (hasUrl) {
+    card.href = source.url;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+  }
+
+  const title = document.createElement("div");
+  title.className = "chat-source-title";
+  title.textContent = source?.title || "Untitled source";
+  card.appendChild(title);
+
+  const metaParts = [];
+
+  if (source?.section) {
+    metaParts.push(source.section);
+  }
+
+  if (source?.id) {
+    metaParts.push(source.id);
+  }
+
+  if (metaParts.length > 0) {
+    const meta = document.createElement("div");
+    meta.className = "chat-source-meta";
+    meta.textContent = metaParts.join(" • ");
+    card.appendChild(meta);
+  }
+
+  if (source?.snippet) {
+    const snippet = document.createElement("div");
+    snippet.className = "chat-source-snippet";
+    snippet.textContent = source.snippet;
+    card.appendChild(snippet);
+  }
+
+  return card;
 }
 
 function addLoadingMessage() {
@@ -62,6 +126,32 @@ function autoResizeTextarea() {
   }
 }
 
+async function sendChatMessage(message) {
+  const res = await fetch(workerUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    const errorText =
+      typeof data?.error === "string"
+        ? data.error
+        : `Error: ${JSON.stringify(data, null, 2)}`;
+
+    throw new Error(errorText);
+  }
+
+  return {
+    reply: data?.reply || "No response returned.",
+    sources: Array.isArray(data?.sources) ? data.sources : []
+  };
+}
+
 if (chatForm) {
   chatForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -78,22 +168,9 @@ if (chatForm) {
     addLoadingMessage();
 
     try {
-      const res = await fetch(workerUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
-      });
-
-      const data = await res.json();
+      const data = await sendChatMessage(message);
       removeLoadingMessage();
-
-      if (!res.ok) {
-        addMessage("assistant", `Error: ${JSON.stringify(data, null, 2)}`);
-      } else {
-        addMessage("assistant", data.reply || "No response returned.");
-      }
+      addMessage("assistant", data.reply, data.sources);
     } catch (err) {
       removeLoadingMessage();
       addMessage("assistant", `Request failed: ${err.message}`);

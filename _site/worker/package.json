@@ -1,0 +1,12 @@
+{
+    "name": "profile-chatbot-worker",
+    "private": true,
+    "type": "module",
+    "scripts": {
+      "build-index": "node build-profile-index.js",
+      "deploy": "wrangler deploy"
+    },
+    "devDependencies": {
+      "wrangler": "^4.12.0"
+    }
+  }
