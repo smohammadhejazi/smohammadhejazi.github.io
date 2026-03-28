@@ -8,7 +8,7 @@ permalink: /news/
   {% assign all_news = site.data.news | sort: "date" | reverse %}
   {% for item in all_news %}
     <li>
-      <span class="news-date">{{ item.date | date: "[%Y/%m/%d]" }}</span>
+      <span class="news-date">{{ item.date | date: "[%Y/%m]" }}</span>
       {{ item.text }}
     </li>
   {% endfor %}
