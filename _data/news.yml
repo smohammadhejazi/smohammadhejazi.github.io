@@ -1,5 +1,8 @@
 - date: 2026-03-01
-  text: 'Our paper "A record replay framework for reproducible LLM inference under fixed execution conditions, with backend-level RNG capture and replay for llama.cpp and vLLM" is at its final stages of being published!'
-
-- date: 2026-03-01
   text: "Updated my personal website and built a personal profile chatbot."
+
+- date: 2026-03-15
+  text: 'Our paper "Backend-Level Record-Replay for Repeatable LLM Inference in llama.cpp and vLLM" is at its final stages of being published!'
+
+- date: 2026-03-28
+  text: 'Working on our new Error/Cost Analysis of Engineering Agents.'
