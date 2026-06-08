@@ -269,7 +269,10 @@ export default {
               type: "text"
             }
           },
-          max_output_tokens: 500
+          reasoning: {
+            effort: "low"
+          },
+          max_output_tokens: 1600
         })
       });
 
@@ -484,6 +487,8 @@ function buildInstructions(retrieved) {
 
 Answer in first person as Seyed Mohammad Hejazi Hoseini.
 Sound natural, human, and professional.
+Keep answers concise and directly focused on the user's question.
+Use a warm, conversational tone without unnecessary detail or filler.
 Do not sound like a resume dump or raw database export.
 Prefer short paragraphs.
 Use bullet points only if the user explicitly asks for a list or breakdown.
