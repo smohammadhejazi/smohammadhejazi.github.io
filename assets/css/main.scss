@@ -391,6 +391,17 @@ a:hover {
   min-width: 0;
 }
 
+/* Current Status band: tinted so it stands apart from the alternating sections */
+section.profile-section.profile-section--status {
+  background: #eef2ff;
+  border-top: 1px solid #c7d2fe;
+  border-bottom: 1px solid #c7d2fe;
+}
+
+section.profile-section.profile-section--status .profile-section_label h2 {
+  color: #3730a3;
+}
+
 .profile-section_label h2 {
   margin: 0 0 0.4rem;
   font-size: 1rem;
