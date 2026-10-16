@@ -17,7 +17,7 @@ Random facts about me:
 - 🎞️ Favorite cartoon series of all time: SpongeBob SquarePants, as silly as it is.
 - 🎮 Favorite video game: The Witcher 3: Wild Hunt.
 - 💇‍♂️ Currently growing my hair, but also getting tired of it.
-- 🧑‍🏫 Very comfortable giving presentations.
+- 🧑‍🏫 I like giving presentations.
 - 🍕 Can make a mean pizza.
 - 🚗 I love driving and listening to music.
 - 📷 In my free time, I make and edit videos on YouTube.
