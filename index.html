@@ -9,11 +9,15 @@ classes:
 
 {% include profile-hero.html %}
 
-{% include research-summary.html %}
-{% include experience.html %}
-{% include publications.html %}
-{% include education-summary.html %}
+{% include now.html %}
 {% include news-summary.html %}
+{% include publications.html %}
+{% include experience.html %}
+{% include projects-summary.html %}
+{% include education-summary.html %}
+{% include beyond-work.html %}
 
+{% if site.chatbot %}
 <script src="{{ '/assets/js/chat.js' | relative_url }}"></script>
+{% endif %}
 <script src="{{ '/assets/js/custom.js' | relative_url }}"></script>

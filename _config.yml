@@ -4,6 +4,10 @@ description: "Research Assistant @ York University | AI Reproducibility"
 url: "http://127.0.0.1:4000"
 baseurl: ""
 
+# Profile chatbot (_includes/chatbot.html, assets/js/chat.js, worker/).
+# Set to true to bring it back on the home page (see worker/ for rebuild + deploy).
+chatbot: false
+
 remote_theme: "mmistakes/minimal-mistakes@4.27.3"
 
 plugins:
