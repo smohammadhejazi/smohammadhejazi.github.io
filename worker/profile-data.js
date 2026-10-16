@@ -3,7 +3,7 @@ export const profileData = {
     name: "Seyed Mohammad Hejazi Hoseini",
     preferred_name: "Mohammad",
     short_intro:
-      "Research Assistant and MASc student in Electrical & Computer Engineering at York University.",
+      "Research Assistant and MASc student in Electrical & Computer Engineering at York University, and part-time Research Intern at Grimlock Consulting.",
     summary:
       "Works on AI reproducibility, software engineering AI agents, software engineering for AI, and AI for software engineering, with a focus on making large language model systems more reliable, traceable, and repeatable in practical settings.",
     location: "Toronto, Canada",
@@ -30,14 +30,20 @@ export const profileData = {
 
   experience: [
     {
+      title: "Research Intern (part-time) at Grimlock Consulting",
+      dates: "Sep. 2026 - Present",
+      summary:
+        "Part-time remote research intern at Grimlock Consulting. Runs experiments to improve AI coding agents such as Claude Code, testing techniques that aim to raise resolve rates and cut cost on SWE-bench Verified, SWE-bench Pro, and related benchmarks. Analyzes agent trajectories and logs and delivers weekly reports with charts and metrics to show current standings and guide next steps."
+    },
+    {
       title: "Research Assistant",
       dates: "Jan. 2025 - Present",
       summary:
-        "Research Assistant at the Lassonde School of Engineering, York University, in Toronto. Builds and studies tooling for reproducible and comparable LLM-agent experiments, including metadata standardization, deterministic run IDs and seeding, record-replay workflows, and systematic analysis of agent behavior, failures, token usage, and cost."
+        "Research Assistant at the Lassonde School of Engineering, York University, in Toronto, supervised by Prof. Zhen Ming (Jack) Jiang. Built a reproducibility framework for LLM-powered systems that combines execution stabilization with record and replay, enabling exact replay across vLLM and llama.cpp, six open-weight LLMs, and A100/H100/H200 GPUs, and identified 11 sources of non-determinism in the LLM execution stack, three of them previously undocumented. Currently developing a process-aware framework for assessing the consistency of LLM-powered software engineering benchmarks (early stage), and previously did an exploratory study of the cost and failure modes of SWE-bench agents."
     },
     {
       title: "Teaching Assistant at York University",
-      dates: "Jan. 2025 - Present",
+      dates: "Jan. 2025 - Apr. 2026",
       summary:
         "Teaching Assistant for courses including Fundamentals of Data Structures and Design and Analysis of Algorithms, Fundamentals of Data Structures, Advanced Object Oriented Programming, and Data Structures for Data Science. Responsibilities have included grading, invigilation, lab demonstration, and tutorial leadership."
     },
@@ -84,7 +90,7 @@ export const profileData = {
   teaching_assistant_experience: [
     {
       course: "Fundamentals of Data Structures and Design and Analysis of Algorithms",
-      term: "Winter 2025",
+      term: "Winter 2026",
       instructor: "Prof. Jackie Wang",
       responsibilities: [
         "Grader",
@@ -150,19 +156,25 @@ export const profileData = {
 
   research_experience: [
     {
-      title: "LLM Reproducibility using Llama.cpp and vLLM",
+      title: "Taming Non-Reproducibility: A Multi-Layered Framework for Divergence Investigation and Reproducible Execution in LLM-Powered Systems (paper under review)",
       dates: "Jan. 2025 - Present",
       summary:
-        "Builds a Python library to make LLM-agent experiments reproducible and comparable across frameworks. The work standardizes run metadata through adapters, generates deterministic run IDs and seeds, adds OpenTelemetry-based recording of traces, logs, and artifacts for record and replay, tests the workflow on OpenAI-compatible backends including llama.cpp and vLLM, and integrates evaluation tooling such as RAGAS to support systematic analysis of agent behavior, failures, and cost and token usage.",
+        "Research paper with supervisor Prof. Zhen Ming (Jack) Jiang, currently under review. It presents a multi-layered framework for investigating non-reproducibility and enabling exact post-hoc replay of LLM-powered executions without removing the intentional stochasticity needed during live execution. The framework combines iterative cross-stack divergence isolation, a taxonomy of eleven sources of non-determinism (three previously undocumented), and a reproducibility harness that pairs execution stabilization with coordinated record and replay. It was evaluated on four workloads with six open-weight LLMs, vLLM and llama.cpp, and A100, H100, and H200 GPUs, and achieves exact replay across all evaluated setups, whereas default runs reproduced only 58-64% of SWE-agent trajectories exactly. The work started as a Python library for reproducible and comparable LLM-agent experiments.",
       links: {
         github: "https://github.com/smohammadhejazi/llm-reproducibility"
       }
     },
     {
-      title: "Error and Cost Analysis of Software Engineering Agents on SWE-bench",
-      dates: "Nov. 2025 - Present",
+      title: "Process-Aware Consistency Assessment of LLM-Powered Software Engineering Benchmarks",
+      dates: "2026 - Present",
       summary:
-        "Ongoing research project analyzing the computational cost and failure modes of SWE-bench Verified agents such as SWE-agent, mini-SWE-agent, Moatless Tools, and Nemotron-CORTEXA. The work quantifies performance and cost metrics from official experiment logs, including success rate, token usage, interaction depth, and cost per success, reviews implementations to understand how budgeting and termination policies influence behavior, and prototypes early-run cost predictors for dynamic budgeting and cost-aware deployment."
+        "Early-stage follow-up research with Prof. Zhen Ming (Jack) Jiang on benchmark reliability. Instead of reporting a single pass or fail outcome per benchmark instance, it characterizes consistency using random states, normalized trajectories, and outcomes, and explores execution divergence points with divergence-guided replay instead of exhaustive repeated runs. There are no results yet."
+    },
+    {
+      title: "Error and Cost Analysis of Software Engineering Agents on SWE-bench",
+      dates: "Nov. 2025 (exploratory, not continued)",
+      summary:
+        "Small exploratory project, started at a professor's suggestion after the Mining Software Engineering Data course, on the cost and failure modes of SWE-bench Verified agents such as SWE-agent, mini-SWE-agent, Moatless Tools, and Nemotron-CORTEXA. It quantified performance and cost metrics from official experiment logs, including success rate, token usage, interaction depth, and cost per success, and prototyped an early-stopping technique to cut wasted cost. The project was not continued beyond these initial experiments."
     },
     {
       title: "Building a Recommendation System Including User Specific Recommendation, Similar Items, and Cold Start",

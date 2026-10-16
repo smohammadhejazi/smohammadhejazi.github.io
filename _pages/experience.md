@@ -4,14 +4,28 @@ layout: single
 permalink: /experience/
 ---
 
+## Research Intern
+
+### Grimlock Consulting
+**Remote**  
+**Sep. 2026 - Present**
+
+- Running experiments to improve AI coding agents such as Claude Code, aiming to raise resolve rates and cut cost on SWE-bench Verified, SWE-bench Pro, and related benchmarks.
+- Analyzing agent trajectories and logs, with weekly reports of charts and metrics to guide next steps.
+
+---
+
 ## Research Assistant
 
 ### Lassonde School of Engineering, York University
 **Toronto, ON**  
-**Jan. 2025 - Present**
+**Jan. 2025 - Present**  
+**Supervisor:** Zhen Ming (Jack) Jiang
 
-- Developing a reproducibility framework for inference engines such as llama.cpp and vLLM.
-- Conducting error analysis and cost prediction for software engineering agents.
+- Built a reproducibility harness for LLM-powered systems that combines execution stabilization with record/replay, achieving exact replay across 4 workloads, 6 open-weight LLMs, vLLM and llama.cpp, and A100/H100/H200 GPUs. Default runs reproduced only 58–64% of SWE-agent trajectories exactly.
+- Identified 11 sources of non-determinism across the LLM execution stack, 3 of them previously undocumented.
+- Developing a process-aware framework for assessing benchmark consistency of LLM-powered software engineering agents (early stage).
+- Exploratory study of cost and failure modes of SWE-bench agents, including a prototype early-stopping technique.
 
 ---
 
@@ -19,11 +33,11 @@ permalink: /experience/
 
 ### York University
 **Toronto, ON**  
-**Jan. 2025 - Present**
+**Jan. 2025 - Apr. 2026**
 
 #### Fundamentals of Data Structures and Design and Analysis of Algorithms
 **Professor:** Jackie Wang  
-**Term:** Winter 2025  
+**Term:** Winter 2026  
 **Position:** Grader, Invigilator
 
 #### Fundamentals of Data Structures

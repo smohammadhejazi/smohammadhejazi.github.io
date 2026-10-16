@@ -2,7 +2,7 @@
   text: "Updated my personal website and built a personal profile chatbot."
 
 - date: 2026-03-15
-  text: 'Our paper "Backend-Level Record-Replay for Repeatable LLM Inference in llama.cpp and vLLM" is at its final stages of being published!'
+  text: 'Still working on our paper "Taming Non-Reproducibility: A Multi-Layered Framework for Divergence Investigation and Reproducible Execution in LLM-Powered Systems", with some interesting results coming out of it along the way.'
 
-- date: 2026-03-28
-  text: 'Working on our new Error/Cost Analysis of Engineering Agents.'
+- date: 2026-10-01
+  text: 'Submitted our paper "Taming Non-Reproducibility: A Multi-Layered Framework for Divergence Investigation and Reproducible Execution in LLM-Powered Systems" to FSE 2027. It is now under review.'
