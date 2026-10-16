@@ -10,7 +10,7 @@ Hi, you can call me Mohammad. I was born in a city called Qom, in Iran.
 
 Random facts about me:
 - :fr: Learning French, slowly but surely.
-- 🏋️‍♂️ Working out regularly for both physical and mental health. Best 2-minute push-up record: 61.
+- 🏋️‍♂️ Working out regularly for body and mind. Bests: 61 push-ups (2 min), 25 pull-ups (one set).
 - ♟️ Used to play a lot of chess, with a peak Chess.com rating of 1740.
 - 🎵 Favorite band at the moment: Bad Omens.
 - 🎥 Favorite movie of all time: Redline.

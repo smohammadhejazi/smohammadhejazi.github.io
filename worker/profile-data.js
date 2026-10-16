@@ -390,7 +390,7 @@ export const profileData = {
     random_facts: [
       "Learning French, slowly but surely.",
       "Works out regularly for both physical and mental health.",
-      "Best 2-minute push-up record: 61.",
+      "Best 2-minute push-up record: 61. Best pull-ups in a single set: 25.",
       "Very comfortable giving presentations.",
       "Favorite movie of all time: Redline.",
       "Favorite cartoon series of all time: SpongeBob SquarePants.",
